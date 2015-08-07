@@ -3,8 +3,7 @@ testing latest material ui changes
 
 This repo is meant to learn about the new javascript styling to replace the current less styling in conx project
 
-npm install
-
+>npm install
 >browserify
 >reactify
 >material-ui
@@ -13,4 +12,4 @@ npm install
 
 to compile 
 
-browserify -t reactify ./app.jsx -o ./build/app.js
+>browserify -t reactify ./app.jsx -o ./build/app.js
