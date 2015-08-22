@@ -5,8 +5,10 @@ var React = require('react')
 var mui = require('material-ui');
 
 var RaisedButton = mui.RaisedButton;
-
+var Paper = mui.Paper;
 var ThemeManager = new mui.Styles.ThemeManager();
+ThemeManager.setTheme(ThemeManager.types.DARK);
+ 
 
 var TestComponent = React.createClass({
 
@@ -14,7 +16,7 @@ var TestComponent = React.createClass({
 
 		return {
 			
-
+			isDark: true
 		};
 	},
 
@@ -24,6 +26,15 @@ var TestComponent = React.createClass({
 		muiTheme: React.PropTypes.object
 	},
 	
+
+	changeTheme: function(){
+		if(this.state.isDark){
+			ThemeManager.setTheme(ThemeManager.types.LIGHT);
+		}else{
+			ThemeManager.setTheme(ThemeManager.types.DARK);
+		}
+		this.setState({isDark: !this.state.isDark});
+	},
 	//required
 	getChildContext: function() {
 	    return {
@@ -32,20 +43,30 @@ var TestComponent = React.createClass({
   	},
 
 	render: function(){
-		console.log("working?")
+		console.log("workings?")
+		
 		return (
 				<div>
-					<div>hello</div>
-					<RaisedButton label="Default"
-					style={{
-						width: '250px',
-						borderRadius: '5px',
-						backgroundColor: '#FF4081',
+					<Paper 
+						Depth={1}
+						style = {{
+							width: '100%',
+							height: '500px'
+						}}>
+						<div>hello</div>
+						<RaisedButton 
+						label="Default"
+						onClick={this.changeTheme}
+						style={{
+							width: '250px',
+							borderRadius: '5px',
+							backgroundColor: '#FF4081',
 
-					} }
+						} }
 
-					primary={true}/>
+						primary={true}/>
 
+					</Paper>
 				</div>
 				//having primary set to true allows the inner button to 
 				//inherit the background color of the entire component
