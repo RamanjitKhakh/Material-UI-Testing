@@ -10,6 +10,6 @@ This repo is meant to learn about the new javascript styling to replace the curr
 >react
 
 
-to compile 
+to compile from root directory:
 
 >browserify -t reactify ./app.jsx -o ./build/app.js
