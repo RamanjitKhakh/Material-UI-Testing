@@ -39503,6 +39503,16 @@ var React = require('react')
 var mui = require('material-ui');
 
 var RaisedButton = mui.RaisedButton;
+var DropDownMenu = mui.DropDownMenu;
+var menuItems = [
+   { payload: '1', text: 'Never' },
+   { payload: '2', text: 'Every Night' },
+   { payload: '3', text: 'Weeknights' },
+   { payload: '4', text: 'Weekends' },
+   { payload: '5', text: 'Weekly' },
+];
+
+
 var Paper = mui.Paper;
 var ThemeManager = new mui.Styles.ThemeManager();
 ThemeManager.setTheme(ThemeManager.types.DARK);
@@ -39541,7 +39551,7 @@ var TestComponent = React.createClass({displayName: "TestComponent",
   	},
 
 	render: function(){
-		console.log("workings?")
+		
 		
 		return (
 				React.createElement("div", null, 
@@ -39558,13 +39568,16 @@ var TestComponent = React.createClass({displayName: "TestComponent",
 						style: {
 							width: '250px',
 							borderRadius: '5px',
-							backgroundColor: '#FF4081',
+							backgroundColor: 'green',
 
 						}, 
 
-						primary: true})
-
+						primary: true}), 
+						React.createElement(DropDownMenu, {
+						menuItems: menuItems, 
+						menuItemStyle: {width: '500px'}})
 					)
+
 				)
 				//having primary set to true allows the inner button to 
 				//inherit the background color of the entire component
