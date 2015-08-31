@@ -23,12 +23,18 @@ ThemeManager.setTheme(ThemeManager.types.DARK);
 var TestComponent = React.createClass({
 
 	getInitialState: function(){
+		
+		var b = localStorage.getItem('ticker') || 0;
+		b = parseInt(b);
 
 		return {
-			
+			counter: b,
 			isDark: true
-		};
+		} 
+
 	},
+
+	
 
 	//required 
 	childContextTypes:{
@@ -43,7 +49,9 @@ var TestComponent = React.createClass({
 		}else{
 			ThemeManager.setTheme(ThemeManager.types.DARK);
 		}
-		this.setState({isDark: !this.state.isDark});
+		this.setState({isDark: !this.state.isDark,
+					   counter: this.state.counter+1});
+		localStorage.setItem('ticker', this.state.counter+1); 
 	},
 	//required
 	getChildContext: function() {
@@ -80,8 +88,10 @@ var TestComponent = React.createClass({
 						menuItems={menuItems}
 						menuItemStyle={{width: '500px'}} />
 					</Paper>
-
+					<div> {this.state.counter} </div>
 				</div>
+
+				
 				//having primary set to true allows the inner button to 
 				//inherit the background color of the entire component
 			);
